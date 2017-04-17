@@ -7,7 +7,7 @@ int main()
 {
     int i;
     int j;
-    int day = 1;
+    int day = 0;
     int count = 5;//当前队员个数
     char name[20];//名字
     int choice;//选择
@@ -50,7 +50,7 @@ int main()
     printf("2.单独训练队员.\t\t(修改状态功能)\n");
     printf("3.淘汰队员!\t\t(删除功能)\n");
     printf("4.恶意调教队员。\n");//待添加
-    printf("请选择: \n");
+    printf("请选择:");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -61,12 +61,21 @@ int main()
             printf("队员已满无法招新\n");
         else
         {//执行添加操作
-            printf("请输入新队员的姓名：");
+
+            for(i=0;i<count;i++)
+            {
+                printf("请输入新队员的姓名：");
             scanf("%s",names[count]);
+                if(strcmp(names[count],names[i])==0)
+                    printf("该成员已存在，请重新选择！\n");
+                else
+                    break;
+            }
+            }
             //将第count个元素的状态初始化（级别，熟练度）
             levels[count] = 0;//初始为零
             loves[count] = 3;//初始为零
-            printf("一天过去了。\n由于招新精力分散，原成员熟练度下降10\n");
+            printf("一天过去了。\n由于招新精力分散，原成员熟练度下降\n");
             for(i=0;i<count;i++)
     {   //根据规则处理数据
         loves[i]--;
@@ -86,7 +95,7 @@ int main()
     }
         count++;
         //添加完毕
-        }
+
     break;
     case 2:
         //单独训练队员
@@ -124,6 +133,7 @@ int main()
                 printf("修炼如逆水行舟，不进则退！\n%s由%s掉级为%s\n",names[i],levelnames[levels[i]+1],levelnames[levels[i]]);
                 }
         }
+        printf("一天过去了。\n由于招新精力分散，原成员熟练度下降\n");
         break;
     case 3://淘汰队员
         printf("请输入要淘汰的队员：");
@@ -156,15 +166,27 @@ int main()
                 printf("修炼如逆水行舟，不进则退！\n%s由%s掉级为%s\n",names[i],levelnames[levels[i]+1],levelnames[levels[i]]);
                 }
             }
-        printf("由于忙于事情，忽视了对队员的管理\n");
-        printf("3.！\n");
+            printf("一天过去了。\n由于招新精力分散，原成员熟练度下降\n");
         break;
-    case 4:
-        printf("该功能未完善待修复\n");
+    case 4://使某成员升级
+         printf("您想加训的队员是：");
+        scanf("%s",one);//使one[]储存名字
+        //查找出相应的数据
+        for(i=0;i<count;i++)
+        {   //字符串查找strcmp(),需要引入头文件<string.h>
+            //strcmp(one，"")=0表示字符串相等
+            //-1表示前大于后
+            if(strcmp(one,names[i])==0)
+            {
+                levels[i]++;
+            }
+        }
+            printf("一天过去了。\n");
         printf("请输入回车继续游戏\n");
         getchar();
         getchar();
         break;
+        default : return 0;
     }
     }
     return 0;
