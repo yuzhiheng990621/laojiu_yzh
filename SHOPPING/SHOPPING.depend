@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1492077299 source:c:\users\administrator\desktop\真学习\shopping\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Shopping.h"
+
+1492077352 c:\users\administrator\desktop\真学习\shopping\shopping.h
+
+1492077245 source:c:\users\administrator\desktop\真学习\shopping\shopping.c
+	"Shopping.h"
+
+1492703876 source:c:\users\administrator\desktop\study\shopping\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Shopping.h"
+
+1492704168 c:\users\administrator\desktop\study\shopping\shopping.h
+
+1492703134 source:c:\users\administrator\desktop\study\shopping\shopping.c
+	"Shopping.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
